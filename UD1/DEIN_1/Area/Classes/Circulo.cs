@@ -4,13 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Area.Classes
+namespace Area
 {
     class Circulo
     {
-        public static double CalcularArea(double diametro)
+        public static double CalcularArea(double radio)
         {
-            return 0;
+            return Math.PI * Math.Pow(radio, 2);
         }
     }
 }

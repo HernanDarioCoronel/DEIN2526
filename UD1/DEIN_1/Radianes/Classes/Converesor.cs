@@ -8,14 +8,14 @@ namespace Radianes
 {
     class Converesor
     {
-        public static double ARadianes(double grados)
+        public static void ARadianes(double grados, ref double resultado)
         {
-            return grados * (Math.PI / 180);
+            resultado = grados * (Math.PI / 180);
         }
 
-        public static double AGrados(double radianes)
+        public static void AGrados(double radianes, ref double resultado)
         {
-            return radianes * (180 / Math.PI);
+            resultado = radianes * (180 / Math.PI);
         }
     }
 }

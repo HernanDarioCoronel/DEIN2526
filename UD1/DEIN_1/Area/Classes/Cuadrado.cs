@@ -4,13 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Area.Classes
+namespace Area
 {
     class Cuadrado
     {
-        public static double CalcularArea(double baseC, double alturaC)
+        public static double CalcularArea(double b, double a)
         {
-            return baseC* alturaC;
+            return b * a;
         }
     }
 }
