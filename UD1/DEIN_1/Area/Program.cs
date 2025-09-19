@@ -18,7 +18,7 @@ namespace Area
             sb.AppendLine("\t1) Area de un círculo.");
             sb.AppendLine("\t2) Area de un cuadrado.");
             sb.AppendLine("\t3) Area de un triángulo.");
-
+/*
             switch (Console.Read())
             {
                 case 1:
@@ -32,7 +32,7 @@ namespace Area
                     {
                         Console.WriteLine("");
                     }
-            }
+            }*/
         }
     }
 }

@@ -57,7 +57,7 @@ namespace Mes
                     Console.WriteLine("Ese mes no existe");
                     break;
             }
-        }
         Console.ReadKey();
+        }
     }
 }

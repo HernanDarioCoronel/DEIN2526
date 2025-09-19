@@ -36,7 +36,7 @@ namespace Estacionamiento
             {
                 Console.WriteLine("Número inválido");
             }
-        }
         Console.ReadKey();
+        }
     }
 }

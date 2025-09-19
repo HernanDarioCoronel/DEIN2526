@@ -31,7 +31,7 @@ namespace Par
             {
                 Console.WriteLine("Número inválido");
             }
-        }
         Console.ReadKey();
+        }
     }
 }
