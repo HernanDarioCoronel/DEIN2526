@@ -91,7 +91,7 @@
             this.FarenheithTbox.Location = new System.Drawing.Point(164, 40);
             this.FarenheithTbox.Name = "FarenheithTbox";
             this.FarenheithTbox.Size = new System.Drawing.Size(100, 20);
-            this.FarenheithTbox.TabIndex = 7;
+            this.FarenheithTbox.TabIndex = 1;
             this.FarenheithTbox.Text = "32.00";
             this.FarenheithTbox.Click += new System.EventHandler(this.FarenheithNud_Enter);
             this.FarenheithTbox.Enter += new System.EventHandler(this.FarenheithNud_Enter);
