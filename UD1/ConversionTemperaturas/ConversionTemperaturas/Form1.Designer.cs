@@ -28,12 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.CalcularBtn = new System.Windows.Forms.Button();
             this.CelsiusTbox = new System.Windows.Forms.TextBox();
             this.FarenheithTbox = new System.Windows.Forms.TextBox();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -59,7 +62,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(27, 22);
+            this.label3.Location = new System.Drawing.Point(12, 22);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(40, 13);
             this.label3.TabIndex = 4;
@@ -77,14 +80,15 @@
             // 
             // CelsiusTbox
             // 
-            this.CelsiusTbox.Location = new System.Drawing.Point(30, 41);
+            this.CelsiusTbox.Location = new System.Drawing.Point(12, 41);
             this.CelsiusTbox.Name = "CelsiusTbox";
             this.CelsiusTbox.Size = new System.Drawing.Size(100, 20);
             this.CelsiusTbox.TabIndex = 0;
             this.CelsiusTbox.Text = "0.00";
             this.CelsiusTbox.Click += new System.EventHandler(this.CelsiusTbox_Enter);
             this.CelsiusTbox.Enter += new System.EventHandler(this.CelsiusTbox_Enter);
-            this.CelsiusTbox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.EnterPress);
+            this.CelsiusTbox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Tbox_Press);
+            this.CelsiusTbox.Validating += new System.ComponentModel.CancelEventHandler(this.Tbox_Validating);
             // 
             // FarenheithTbox
             // 
@@ -95,7 +99,12 @@
             this.FarenheithTbox.Text = "32.00";
             this.FarenheithTbox.Click += new System.EventHandler(this.FarenheithTbox_Enter);
             this.FarenheithTbox.Enter += new System.EventHandler(this.FarenheithTbox_Enter);
-            this.FarenheithTbox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.EnterPress);
+            this.FarenheithTbox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Tbox_Press);
+            this.FarenheithTbox.Validating += new System.ComponentModel.CancelEventHandler(this.Tbox_Validating);
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
             // 
             // Form1
             // 
@@ -111,6 +120,7 @@
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -123,6 +133,7 @@
         private System.Windows.Forms.Button CalcularBtn;
         private System.Windows.Forms.TextBox CelsiusTbox;
         private System.Windows.Forms.TextBox FarenheithTbox;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }
 
