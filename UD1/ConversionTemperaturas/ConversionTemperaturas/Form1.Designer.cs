@@ -82,8 +82,8 @@
             this.CelsiusTbox.Size = new System.Drawing.Size(100, 20);
             this.CelsiusTbox.TabIndex = 0;
             this.CelsiusTbox.Text = "0.00";
-            this.CelsiusTbox.Click += new System.EventHandler(this.CelsiusNud_Enter);
-            this.CelsiusTbox.Enter += new System.EventHandler(this.CelsiusNud_Enter);
+            this.CelsiusTbox.Click += new System.EventHandler(this.CelsiusTbox_Enter);
+            this.CelsiusTbox.Enter += new System.EventHandler(this.CelsiusTbox_Enter);
             this.CelsiusTbox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.EnterPress);
             // 
             // FarenheithTbox
@@ -93,8 +93,8 @@
             this.FarenheithTbox.Size = new System.Drawing.Size(100, 20);
             this.FarenheithTbox.TabIndex = 1;
             this.FarenheithTbox.Text = "32.00";
-            this.FarenheithTbox.Click += new System.EventHandler(this.FarenheithNud_Enter);
-            this.FarenheithTbox.Enter += new System.EventHandler(this.FarenheithNud_Enter);
+            this.FarenheithTbox.Click += new System.EventHandler(this.FarenheithTbox_Enter);
+            this.FarenheithTbox.Enter += new System.EventHandler(this.FarenheithTbox_Enter);
             this.FarenheithTbox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.EnterPress);
             // 
             // Form1

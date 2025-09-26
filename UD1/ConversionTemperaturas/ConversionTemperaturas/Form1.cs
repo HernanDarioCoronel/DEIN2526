@@ -11,7 +11,6 @@ namespace ConversionTemperaturas
             FarenheithNud
         }
         private SelectedBoxEnum selected;
-        private static char ENTER = (char)13;
 
         public Form1()
         {
@@ -22,13 +21,13 @@ namespace ConversionTemperaturas
         {
         }
 
-        private void CelsiusNud_Enter(object sender, EventArgs e)
+        private void CelsiusTbox_Enter(object sender, EventArgs e)
         {
             this.CelsiusTbox.Select(0, int.MaxValue);
             this.selected = SelectedBoxEnum.CelsiusNud;
         }
 
-        private void FarenheithNud_Enter(object sender, EventArgs e)
+        private void FarenheithTbox_Enter(object sender, EventArgs e)
         {
             this.FarenheithTbox.Select(0, int.MaxValue);
             this.selected = SelectedBoxEnum.FarenheithNud;
@@ -54,11 +53,11 @@ namespace ConversionTemperaturas
             throw new Exception("No es un número.");
         }
 
-        private void CalcularBtn_Click(object sender, EventArgs e)=>Calcular();
+        private void CalcularBtn_Click(object sender, EventArgs e) => Calcular();
 
         private void EnterPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == ENTER)
+            if (e.KeyChar == (char)Keys.Enter)
             {
                 Calcular();
             }
