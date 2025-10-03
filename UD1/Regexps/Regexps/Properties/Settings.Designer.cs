@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Regexps.Properties
+namespace RegExps.Properties
 {
 
 
