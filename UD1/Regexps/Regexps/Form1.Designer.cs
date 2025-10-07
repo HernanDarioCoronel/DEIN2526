@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.BtnUrl = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.TboxUrl = new System.Windows.Forms.TextBox();
@@ -41,6 +42,8 @@
             this.label4 = new System.Windows.Forms.Label();
             this.TboxPaste = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.infoProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.infoProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // BtnUrl
@@ -144,6 +147,7 @@
             this.TboxPaste.Name = "TboxPaste";
             this.TboxPaste.Size = new System.Drawing.Size(100, 20);
             this.TboxPaste.TabIndex = 14;
+            this.TboxPaste.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TboxPaste_KeyDown);
             // 
             // label5
             // 
@@ -153,6 +157,10 @@
             this.label5.Size = new System.Drawing.Size(35, 13);
             this.label5.TabIndex = 13;
             this.label5.Text = "Pegar";
+            // 
+            // infoProvider
+            // 
+            this.infoProvider.ContainerControl = this;
             // 
             // Form1
             // 
@@ -174,7 +182,7 @@
             this.Controls.Add(this.BtnUrl);
             this.Name = "Form1";
             this.Text = "Form1";
-            this.Load += new System.EventHandler(this.Form1_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.infoProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -195,6 +203,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox TboxPaste;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.ErrorProvider infoProvider;
     }
 }
 
