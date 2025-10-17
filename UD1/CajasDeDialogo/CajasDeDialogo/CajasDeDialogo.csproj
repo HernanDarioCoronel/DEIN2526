@@ -46,25 +46,43 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Login.cs">
+    <Compile Include="DlgCasillaVerificacion.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Login.Designer.cs">
-      <DependentUpon>Login.cs</DependentUpon>
+    <Compile Include="DlgCasillaVerificacion.Designer.cs">
+      <DependentUpon>DlgCasillaVerificacion.cs</DependentUpon>
     </Compile>
-    <Compile Include="LoginDialog.cs">
+    <Compile Include="DlgListaSimple.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="LoginDialog.Designer.cs">
-      <DependentUpon>LoginDialog.cs</DependentUpon>
+    <Compile Include="DlgListaSimple.Designer.cs">
+      <DependentUpon>DlgListaSimple.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DlgLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DlgLogin.Designer.cs">
+      <DependentUpon>DlgLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Login.resx">
-      <DependentUpon>Login.cs</DependentUpon>
+    <EmbeddedResource Include="DlgCasillaVerificacion.resx">
+      <DependentUpon>DlgCasillaVerificacion.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="LoginDialog.resx">
-      <DependentUpon>LoginDialog.cs</DependentUpon>
+    <EmbeddedResource Include="DlgListaSimple.resx">
+      <DependentUpon>DlgListaSimple.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DlgLogin.resx">
+      <DependentUpon>DlgLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
