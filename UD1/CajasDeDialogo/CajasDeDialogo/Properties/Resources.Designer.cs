@@ -61,7 +61,7 @@ namespace CajasDeDialogo.Properties {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a abc123..
+        ///   Busca una cadena traducida similar a 1234.
         /// </summary>
         internal static string pws {
             get {

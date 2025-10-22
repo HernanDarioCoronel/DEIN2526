@@ -33,6 +33,9 @@
             this.menuArchivo = new System.Windows.Forms.ToolStripMenuItem();
             this.archivoSalir = new System.Windows.Forms.ToolStripMenuItem();
             this.menuDialogos = new System.Windows.Forms.ToolStripMenuItem();
+            this.listaSimpleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.casillaDeVerificaciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.ayudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ayudaAcercaDe = new System.Windows.Forms.ToolStripMenuItem();
             this.menuAyuda.SuspendLayout();
@@ -68,14 +71,39 @@
             // archivoSalir
             // 
             this.archivoSalir.Name = "archivoSalir";
-            this.archivoSalir.Size = new System.Drawing.Size(152, 22);
+            this.archivoSalir.Size = new System.Drawing.Size(96, 22);
             this.archivoSalir.Text = "&Salir";
             // 
             // menuDialogos
             // 
+            this.menuDialogos.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.listaSimpleToolStripMenuItem,
+            this.casillaDeVerificaciónToolStripMenuItem,
+            this.toolStripMenuItem1});
             this.menuDialogos.Name = "menuDialogos";
             this.menuDialogos.Size = new System.Drawing.Size(65, 20);
             this.menuDialogos.Text = "&Diálogos";
+            // 
+            // listaSimpleToolStripMenuItem
+            // 
+            this.listaSimpleToolStripMenuItem.Name = "listaSimpleToolStripMenuItem";
+            this.listaSimpleToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
+            this.listaSimpleToolStripMenuItem.Text = "&Lista Simple";
+            this.listaSimpleToolStripMenuItem.Click += new System.EventHandler(this.listaSimpleToolStripMenuItem_Click);
+            // 
+            // casillaDeVerificaciónToolStripMenuItem
+            // 
+            this.casillaDeVerificaciónToolStripMenuItem.Name = "casillaDeVerificaciónToolStripMenuItem";
+            this.casillaDeVerificaciónToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
+            this.casillaDeVerificaciónToolStripMenuItem.Text = "&Casilla de verificación";
+            this.casillaDeVerificaciónToolStripMenuItem.Click += new System.EventHandler(this.casillaDeVerificaciónToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(188, 22);
+            this.toolStripMenuItem1.Text = "Fotografía";
+            this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
             // 
             // ayudaToolStripMenuItem
             // 
@@ -88,7 +116,7 @@
             // ayudaAcercaDe
             // 
             this.ayudaAcercaDe.Name = "ayudaAcercaDe";
-            this.ayudaAcercaDe.Size = new System.Drawing.Size(152, 22);
+            this.ayudaAcercaDe.Size = new System.Drawing.Size(126, 22);
             this.ayudaAcercaDe.Text = "&Acerca de";
             // 
             // MainForm
@@ -116,5 +144,8 @@
         private System.Windows.Forms.ToolStripMenuItem menuDialogos;
         private System.Windows.Forms.ToolStripMenuItem ayudaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ayudaAcercaDe;
+        private System.Windows.Forms.ToolStripMenuItem listaSimpleToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem casillaDeVerificaciónToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
     }
 }

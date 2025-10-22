@@ -117,10 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="pws" xml:space="preserve">
-    <value>1234</value>
-  </data>
-  <data name="user" xml:space="preserve">
-    <value>asd</value>
-  </data>
 </root>

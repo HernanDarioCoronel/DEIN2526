@@ -52,6 +52,12 @@
     <Compile Include="DlgCasillaVerificacion.Designer.cs">
       <DependentUpon>DlgCasillaVerificacion.cs</DependentUpon>
     </Compile>
+    <Compile Include="DlgFotografía.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DlgFotografía.Designer.cs">
+      <DependentUpon>DlgFotografía.cs</DependentUpon>
+    </Compile>
     <Compile Include="DlgListaSimple.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -74,6 +80,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="DlgCasillaVerificacion.resx">
       <DependentUpon>DlgCasillaVerificacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DlgFotografía.resx">
+      <DependentUpon>DlgFotografía.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DlgListaSimple.resx">
       <DependentUpon>DlgListaSimple.cs</DependentUpon>
