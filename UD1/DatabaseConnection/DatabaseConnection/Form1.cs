@@ -1,14 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.OleDb;
 using System.Data.SqlClient;
-using System.Drawing;
 using System.IO;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace DatabaseConnection
@@ -17,7 +12,8 @@ namespace DatabaseConnection
     {
         DataSet ds;
         OleDbConnection connection;
-        OleDbDataAdapter adapter;
+        string dbPath;
+        string connectionString;
 
         public Form1()
         {
@@ -26,38 +22,58 @@ namespace DatabaseConnection
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            string dbPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\Negocio.mdb");
-            string connectionString = $@"Provider=Microsoft.Jet.OLEDB.4.0;Data Source={dbPath};";
+            this.dbPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\Negocio.mdb");
+            this.connectionString = $@"Provider=Microsoft.Jet.OLEDB.4.0;Data Source={dbPath};";
 
             connection = new OleDbConnection(connectionString);
 
 
-            adapter = new OleDbDataAdapter("SELECT * FROM Clientes ORDER BY Apelido1, Apelido2;", connection);            ds = new DataSet();            adapter.Fill(ds, "Clientes");
             this.RefreshList();
         }
 
         private void RefreshList()
         {
-            listBox1.Items.Clear();
-
-            DataTable table = ds.Tables["Clientes"];
-
-            foreach (DataRow row in table.Rows)
+            try
             {
-                StringBuilder sb = new StringBuilder();
-                sb.Append(row["id"]);
-                sb.Append("-");
-                sb.Append(row["Apelido1"]);
-                sb.Append("-");
-                sb.Append(row["Apelido2"]);
-                sb.Append("-");
-                sb.Append(row["Nome"]);
-                sb.Append("-");
-                sb.Append(row["codigoProvincia"]);
+                listBox1.Items.Clear();
+                
+                string query = "SELECT * FROM Clientes ORDER BY Apelido1, Apelido2;";
+                connection.Open();
+                OleDbCommand command = new OleDbCommand(query, connection);
+                
+                DataTable table = new DataTable("Clientes");
+                
+                using (OleDbDataReader reader = command.ExecuteReader())
+                {
+                    table.Load(reader);
+                }
+                
+                foreach (DataRow row in table.Rows)
+                {
+                    StringBuilder sb = new StringBuilder();
+                    sb.Append(row["id"]);
+                    sb.Append(" - ");
+                    sb.Append(row["Apelido1"]);
+                    sb.Append(" - ");
+                    sb.Append(row["Apelido2"]);
+                    sb.Append(" - ");
+                    sb.Append(row["Nome"]);
+                    sb.Append(" - ");
+                    sb.Append(row["codigoProvincia"]);
 
-                listBox1.Items.Add(sb.ToString());
+                    listBox1.Items.Add(sb.ToString());
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
             }
         }
+
 
         private void btModificar_Click(object sender, EventArgs e)
         {
@@ -86,6 +102,35 @@ namespace DatabaseConnection
         {
             connection.Close();
             this.Close();
+        }
+
+        private void btActualizar_Click(object sender, EventArgs e)
+        {
+            RefreshList();
+        }
+
+        private void btInsertar_Click(object sender, EventArgs e)
+        {
+            OleDbCommand command;
+            if (ctIdCliente.Text == "")
+            {
+                string sqlString = $"INSERT INTO Clientes (Apelido1, Apelido2, Nome) VALUES ('{ ctApel1.Text }', '{ctApel2.Text}', '{ctNome.Text}');";
+                this.connection.Open();
+                command = new OleDbCommand(sqlString, this.connection);
+                try
+                {
+                    command.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                finally
+                {
+                    this.connection.Close();
+                }
+
+            }
         }
     }
 }
