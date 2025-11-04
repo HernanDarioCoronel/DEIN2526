@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Data;
 using System.Data.OleDb;
-using System.Data.SqlClient;
 using System.IO;
 using System.Text;
 using System.Windows.Forms;
@@ -10,7 +9,7 @@ namespace DatabaseConnection
 {
     public partial class Form1 : Form
     {
-        DataSet ds;
+        DataTable dataTable;
         OleDbConnection connection;
         string dbPath;
         string connectionString;
@@ -25,30 +24,26 @@ namespace DatabaseConnection
             this.dbPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\Negocio.mdb");
             this.connectionString = $@"Provider=Microsoft.Jet.OLEDB.4.0;Data Source={dbPath};";
 
-            connection = new OleDbConnection(connectionString);
-
-
+            this.connection = new OleDbConnection(connectionString);
             this.RefreshList();
         }
 
         private void RefreshList()
         {
+            //dejar comentada la otra manera de hacerlo
             try
             {
                 listBox1.Items.Clear();
-                
                 string query = "SELECT * FROM Clientes ORDER BY Apelido1, Apelido2;";
                 connection.Open();
                 OleDbCommand command = new OleDbCommand(query, connection);
-                
-                DataTable table = new DataTable("Clientes");
-                
+
                 using (OleDbDataReader reader = command.ExecuteReader())
                 {
-                    table.Load(reader);
+                    dataTable = new DataTable("Clientes");
+                    dataTable.Load(reader);
                 }
-                
-                foreach (DataRow row in table.Rows)
+                foreach (DataRow row in dataTable.Rows)
                 {
                     StringBuilder sb = new StringBuilder();
                     sb.Append(row["id"]);
@@ -70,37 +65,32 @@ namespace DatabaseConnection
             }
             finally
             {
-                connection.Close();
+                this.ClearFields();
+                this.connection.Close();
             }
+
         }
 
 
         private void btModificar_Click(object sender, EventArgs e)
         {
-            DataTable table = ds.Tables["Clientes"];
-
-            String[] selectedData = listBox1.SelectedItem.ToString().Split('-');
-            DataRow foudRow = null;
-            foreach (DataRow row in table.Rows)
+            string selecteditem = this.listBox1.SelectedItem.ToString();
+            int selectedId = int.Parse(selecteditem.Substring(0, selecteditem.IndexOf(" - ")));
+            foreach (DataRow row in dataTable.Rows)
             {
-                if (row["id"].ToString().Equals(selectedData[0]))
+                if (row["id"].Equals(selectedId))
                 {
-                    foudRow = row;
+                    this.ctIdCliente.Text = row["id"].ToString();
+                    this.ctApel1.Text = row["Apelido1"].ToString();
+                    this.ctApel2.Text = row["Apelido2"].ToString();
+                    this.ctNome.Text = row["Nome"].ToString();
                     break;
                 }
-            }
-            if (foudRow != null)
-            {
-                this.ctIdCliente.Text = foudRow["id"].ToString();
-                this.ctNome.Text = foudRow["Nome"].ToString();
-                this.ctApel1.Text = foudRow["Apelido1"].ToString();
-                this.ctApel2.Text = foudRow["Apelido2"].ToString();
             }
         }
 
         private void btSalir_Click(object sender, EventArgs e)
         {
-            connection.Close();
             this.Close();
         }
 
@@ -111,26 +101,72 @@ namespace DatabaseConnection
 
         private void btInsertar_Click(object sender, EventArgs e)
         {
-            OleDbCommand command;
-            if (ctIdCliente.Text == "")
+            try
             {
-                string sqlString = $"INSERT INTO Clientes (Apelido1, Apelido2, Nome) VALUES ('{ ctApel1.Text }', '{ctApel2.Text}', '{ctNome.Text}');";
+                OleDbCommand command;
                 this.connection.Open();
-                command = new OleDbCommand(sqlString, this.connection);
-                try
-                {
-                    command.ExecuteNonQuery();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-                finally
-                {
-                    this.connection.Close();
-                }
+                string sqlString;
+                if (ctIdCliente.Text == "")
+                    sqlString = String.Format("INSERT INTO Clientes (Apelido1, Apelido2, Nome) VALUES ('{0}', '{1}', '{2}');",
+                        ctApel1.Text,
+                        ctApel2.Text,
+                        ctNome.Text);
+                else
+                    sqlString = String.Format("UPDATE Clientes SET Apelido1 = '{0}', Apelido2 = '{1}', Nome = '{2}' WHERE id = {3};",
+                        ctApel1.Text,
+                        ctApel2.Text,
+                        ctNome.Text,
+                        ctIdCliente.Text);
 
+                command = new OleDbCommand(sqlString, this.connection);
+                command.ExecuteNonQuery();
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                this.connection.Close();
+                this.ClearFields();
+                this.RefreshList();
+            }
+
+        }
+
+        private void btEliminar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                OleDbCommand command;
+                this.connection.Open();
+
+                string selecteditem = this.listBox1.SelectedItem.ToString();
+                int selectedId = int.Parse(selecteditem.Substring(0, selecteditem.IndexOf(" - ")));
+
+                string sqlString = String.Format("DELETE FROM Clientes WHERE id = {0}", selectedId);
+
+                command = new OleDbCommand(sqlString, this.connection);
+                command.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                this.connection.Close();
+                this.ClearFields();
+                this.RefreshList();
+            }
+        }
+
+        private void ClearFields()
+        {
+            this.ctIdCliente.Text = "";
+            this.ctApel1.Text = "";
+            this.ctApel2.Text = "";
+            this.ctNome.Text = "";
         }
     }
 }
