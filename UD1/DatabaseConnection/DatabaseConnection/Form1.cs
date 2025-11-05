@@ -28,9 +28,64 @@ namespace DatabaseConnection
             this.RefreshList();
         }
 
+        /// <summary>
+        /// Función para refrescar la lista de Clientes utilizando <see cref="OleDbDataAdapter"/> para hacerlo.
+        /// <see cref="OleDbDataAdapter"/> es más útil para relaciones entre tablas mientras que <see cref="OleDbDataReader"/>
+        /// es mejor para consultas a una sola tabla ya que es más rápido y es de sólo lectura.
+        /// </summary>
+        /// <exception cref="System.Exception">
+        /// Se lanza si hay un error al intentar abrir la conexión a la base de datos o ejecutar la consulta. 
+        /// (Por ejemplo, si la base de datos está inaccesible o si el comando SQL falla).
+        /// </exception>
         private void RefreshList()
         {
-            //dejar comentada la otra manera de hacerlo
+            try
+            {
+                string query = "SELECT * FROM Clientes ORDER BY Apelido1, Apelido2;";
+                connection.Open();
+                OleDbCommand command = new OleDbCommand(query, connection);
+                OleDbDataAdapter dataAdapter = new OleDbDataAdapter(command);
+                DataSet dSet = new DataSet();
+                dataAdapter.Fill(dSet);
+                dataTable = dSet.Tables[0];
+                foreach (DataRow row in dSet.Tables[0].Rows)
+                {
+                    StringBuilder sb = new StringBuilder();
+                    sb.Append(row["id"]);
+                    sb.Append(" - ");
+                    sb.Append(row["Apelido1"]);
+                    sb.Append(" - ");
+                    sb.Append(row["Apelido2"]);
+                    sb.Append(" - ");
+                    sb.Append(row["Nome"]);
+                    sb.Append(" - ");
+                    sb.Append(row["codigoProvincia"]);
+
+                    listBox1.Items.Add(sb.ToString());
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                this.connection.Close();
+            }
+        }
+
+
+        /// <summary>
+        /// Función para refrescar la lista de Clientes utilizando <see cref="OleDbDataReader"/> para hacerlo.
+        /// <see cref="OleDbDataAdapter"/> es más útil para relaciones entre tablas mientras que <see cref="OleDbDataReader"/>
+        /// es mejor para consultas a una sola tabla ya que es más rápido y es de sólo lectura.
+        /// </summary>
+        /// <exception cref="System.Exception">
+        /// Se lanza si hay un error al intentar abrir la conexión a la base de datos o ejecutar la consulta. 
+        /// (Por ejemplo, si la base de datos está inaccesible o si el comando SQL falla).
+        /// </exception>
+        private void RefreshListOle()
+        {
             try
             {
                 listBox1.Items.Clear();
@@ -96,7 +151,7 @@ namespace DatabaseConnection
 
         private void btActualizar_Click(object sender, EventArgs e)
         {
-            RefreshList();
+            RefreshListOle();
         }
 
         private void btInsertar_Click(object sender, EventArgs e)
@@ -129,7 +184,7 @@ namespace DatabaseConnection
             {
                 this.connection.Close();
                 this.ClearFields();
-                this.RefreshList();
+                this.RefreshListOle();
             }
 
         }
@@ -157,7 +212,7 @@ namespace DatabaseConnection
             {
                 this.connection.Close();
                 this.ClearFields();
-                this.RefreshList();
+                this.RefreshListOle();
             }
         }
 
