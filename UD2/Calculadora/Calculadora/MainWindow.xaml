@@ -1,0 +1,230 @@
+﻿<Window
+    x:Class="Calculadora.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:Calculadora"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="MainWindow"
+    Width="300"
+    Height="350"
+    Background="LightGray"
+    ResizeMode="NoResize"
+    mc:Ignorable="d">
+    <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="40" />
+            <ColumnDefinition Width="40" />
+            <ColumnDefinition Width="40" />
+            <ColumnDefinition Width="40" />
+            <ColumnDefinition Width="40" />
+            <ColumnDefinition Width="40" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40" />
+            <RowDefinition Height="40" />
+            <RowDefinition Height="40" />
+            <RowDefinition Height="40" />
+            <RowDefinition Height="40" />
+            <RowDefinition Height="40" />
+            <RowDefinition Height="40" />
+        </Grid.RowDefinitions>
+        <TextBox
+            IsReadOnly="True"
+            Name="cuentaCt"
+            Grid.Row="0"
+            Grid.Column="0"
+            Grid.ColumnSpan="6"
+            Margin="5"
+            HorizontalContentAlignment="Right"
+            VerticalContentAlignment="Center"
+            FontSize="20" />
+        <Button
+            Grid.Row="1"
+            Grid.Column="0"
+            Margin="5"
+            Click="Number_Click"
+            Content="7" />
+        <Button
+            Grid.Row="1"
+            Grid.Column="1"
+            Margin="5"
+            Click="Number_Click"
+            Content="8" />
+        <Button
+            Grid.Row="1"
+            Grid.Column="2"
+            Margin="5"
+            Click="Number_Click"
+            Content="9" />
+        <Button
+            Name="masMenos"
+            Grid.Row="1"
+            Grid.Column="3"
+            Margin="5"
+            Background="DarkGray"
+            Content="±"
+            Click="SingleOperator_Click" />
+        <Button
+            Name="porcentaje"
+            Grid.Row="1"
+            Grid.Column="4"
+            Margin="5"
+            Background="DarkGray"
+            Content="%" 
+            Click="SingleOperator_Click"/>
+        <Button
+            Name="seno"
+            Grid.Row="1"
+            Grid.Column="5"
+            Margin="5"
+            Background="DarkGray"
+            Content="Sen"
+            Click="SingleOperator_Click" />
+
+
+        <Button
+            Grid.Row="2"
+            Grid.Column="0"
+            Margin="5"
+            Click="Number_Click"
+            Content="4" />
+        <Button
+            Grid.Row="2"
+            Grid.Column="1"
+            Margin="5"
+            Click="Number_Click"
+            Content="5" />
+        <Button
+            Grid.Row="2"
+            Grid.Column="2"
+            Margin="5"
+            Click="Number_Click"
+            Content="6" />
+        <Button
+            Name="menos"
+            Grid.Row="2"
+            Grid.Column="3"
+            Margin="5"
+            Background="DarkGray"
+            Click="Symbol_Click"
+            Content="-" />
+        <Button
+            Name="mas"
+            Grid.Row="2"
+            Grid.Column="4"
+            Margin="5"
+            Background="DarkGray"
+            Click="Symbol_Click"
+            Content="+" />
+        <Button
+            Name="coseno"
+            Grid.Row="2"
+            Grid.Column="5"
+            Margin="5"
+            Background="DarkGray"
+            Content="Cos"
+            Click="SingleOperator_Click" />
+
+
+        <Button
+            Grid.Row="3"
+            Grid.Column="0"
+            Margin="5"
+            Click="Number_Click"
+            Content="1" />
+        <Button
+            Grid.Row="3"
+            Grid.Column="1"
+            Margin="5"
+            Click="Number_Click"
+            Content="2" />
+        <Button
+            Grid.Row="3"
+            Grid.Column="2"
+            Margin="5"
+            Click="Number_Click"
+            Content="3" />
+        <Button
+            Name="dividir"
+            Grid.Row="3"
+            Grid.Column="3"
+            Margin="5"
+            Background="DarkGray"
+            Click="Symbol_Click"
+            Content="/" />
+        <Button
+            Name="multiplicar"
+            Grid.Row="3"
+            Grid.Column="4"
+            Margin="5"
+            Background="DarkGray"
+            Click="Symbol_Click"
+            Content="*" />
+        <Button
+            Name="tangente"
+            Grid.Row="3"
+            Grid.Column="5"
+            Margin="5"
+            Background="DarkGray"
+            Content="Tan"
+            Click="SingleOperator_Click" />
+
+
+        <Button
+            Grid.Row="4"
+            Grid.Column="0"
+            Margin="5"
+            Click="Number_Click"
+            Content="0" />
+        <Button
+            Grid.Row="4"
+            Grid.Column="1"
+            Margin="5"
+            Click="Number_Click"
+            Content="." />
+        <Button
+            Name="igual"
+            Grid.Row="4"
+            Grid.Column="2"
+            Margin="5"
+            Background="RoyalBlue"
+            Content="=" Click="igual_Click" />
+        <Button
+            Grid.Row="4"
+            Grid.Column="3"
+            Grid.ColumnSpan="2"
+            Margin="5"
+            Background="MediumTurquoise" Click="Button_Click">
+            <Button.Content>
+                <![CDATA[<- Borrar]]>
+            </Button.Content>
+        </Button>
+        <Button
+            Grid.Row="4"
+            Grid.Column="5"
+            Margin="5"
+            Background="#F94F4F"
+            Click="DeleteAll_Click"
+            Content="CE" />
+
+
+        <Label
+            Grid.Row="5"
+            Grid.RowSpan="2"
+            Grid.Column="0"
+            Grid.ColumnSpan="3"
+            Content="Diseñada por:" />
+        <Label
+            Grid.Row="5"
+            Grid.Column="3"
+            Grid.ColumnSpan="3"
+            Content="Hernán Coronel" />
+        <Label
+            Grid.Row="6"
+            Grid.Column="3"
+            Grid.ColumnSpan="3"
+            Content="Curso: 2025/2026" />
+
+    </Grid>
+</Window>
