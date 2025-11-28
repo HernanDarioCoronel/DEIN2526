@@ -1,0 +1,87 @@
+﻿<Window
+    x:Class="WpfMediaControl.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="Reproductor Multimedia WPF"
+    Width="800"
+    Height="450">
+    <Grid Margin="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <GroupBox
+            Grid.Column="0"
+            Margin="5"
+            Header="Vídeo">
+            <StackPanel>
+                <MediaElement
+                    Name="mediaVideo"
+                    Height="200"
+                    Margin="0,0,0,10"
+                    LoadedBehavior="Manual"
+                    Source="EvolvingJuliaSet.wmv"
+                    Stretch="Uniform"
+                    UnloadedBehavior="Stop" />
+
+                <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                    <Button
+                        Width="80"
+                        Margin="5"
+                        Click="PlayVideo_Click"
+                        Content="Play" />
+                    <Button
+                        Width="80"
+                        Margin="5"
+                        Click="PauseVideo_Click"
+                        Content="Pause" />
+                    <Button
+                        Width="80"
+                        Margin="5"
+                        Click="RewindVideo_Click"
+                        Content="Rewind" />
+                </StackPanel>
+            </StackPanel>
+        </GroupBox>
+
+        <GroupBox
+            Grid.Column="1"
+            Margin="5"
+            Header="Audio">
+            <StackPanel>
+                <MediaElement
+                    Name="mediaAudio"
+                    Width="0"
+                    Height="0"
+                    Margin="0,0,0,10"
+                    LoadedBehavior="Manual"
+                    Source="Windows XP Startup.wav"
+                    UnloadedBehavior="Stop" />
+
+                <TextBlock
+                    Margin="0,95,0,105"
+                    HorizontalAlignment="Center"
+                    Text="Reproductor de Audio" />
+
+                <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                    <Button
+                        Width="80"
+                        Margin="5"
+                        Click="PlayAudio_Click"
+                        Content="Play" />
+                    <Button
+                        Width="80"
+                        Margin="5"
+                        Click="PauseAudio_Click"
+                        Content="Pause" />
+                    <Button
+                        Width="80"
+                        Margin="5"
+                        Click="RewindAudio_Click"
+                        Content="Rewind" />
+                </StackPanel>
+            </StackPanel>
+        </GroupBox>
+    </Grid>
+</Window>

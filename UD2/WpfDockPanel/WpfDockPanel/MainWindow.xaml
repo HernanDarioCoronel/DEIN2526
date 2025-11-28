@@ -1,0 +1,19 @@
+﻿<Window x:Class="DockPanelExample.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Control DockPanel" Height="350" Width="500">
+
+    <DockPanel>
+        <Button DockPanel.Dock="Top" Background="Salmon" Content="Top" FontSize="16"/>
+        <Button DockPanel.Dock="Top" Background="LightCoral" Content="Top 1" FontSize="16"/>
+        <Button DockPanel.Dock="Bottom" Background="Salmon" Content="Bottom" FontSize="16"/>
+        <Button DockPanel.Dock="Bottom" Background="LightCoral" Content="Bottom 1" FontSize="16"/>
+        <Button DockPanel.Dock="Left" Background="Cyan" Content="Left" FontSize="16"/>
+        <Button DockPanel.Dock="Left" Background="WhiteSmoke" Content="Left 1" FontSize="16"/>
+        <Button DockPanel.Dock="Right" Background="Cyan" Content="Right" FontSize="16"/>
+        <Button DockPanel.Dock="Right" Background="WhiteSmoke" Content="Right 1" FontSize="16"/>
+
+        <Button Background="#D3D3D3" Content="Middle" FontSize="16"/>
+
+    </DockPanel>
+</Window>

@@ -136,9 +136,11 @@ namespace Calculadora
             this.igual.IsEnabled = isEnabled;
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void borrar_Click(object sender, RoutedEventArgs e)
         {
-            this.
+            string numero =this.cuentaCt.Text;
+            numero = numero.Remove(numero.Length - 1, 1);
+            this.cuentaCt.Text = numero;
         }
     }
 }
