@@ -1,12 +1,87 @@
-﻿<Window x:Class="ReproductorMultimedia.MainWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:ReproductorMultimedia"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        
+﻿<Window
+    x:Class="ReproductorMultimedia.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:ReproductorMultimedia"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="MainWindow"
+    Width="525"
+    Height="350"
+    mc:Ignorable="d">
+    <Grid Background="#2a2a2a">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="100" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="20" />
+        </Grid.RowDefinitions>
+        <MediaElement
+            Name="mediaPlayer"
+            Grid.Row="0"
+            Grid.Column="0"
+            LoadedBehavior="Manual"
+            UnloadedBehavior="Stop" />
+        <StackPanel Grid.Row="0" Grid.Column="1">
+            <Button
+                Name="playBt"
+                Click="play_Click"
+                Content="Play"
+                IsEnabled="False" />
+            <Button
+                Name="pauseBt"
+                Click="pause_Click"
+                Content="Pause"
+                IsEnabled="False" />
+            <Button
+                Name="stopBt"
+                Click="stop_Click"
+                Content="Stop"
+                IsEnabled="False" />
+            <Button
+                Name="muteBt"
+                Click="mute_Click"
+                Content="Silencio" />
+            <TextBlock
+                FontSize="10"
+                Foreground="White"
+                Text="Volumen" />
+            <Slider
+                Name="volumeSlider"
+                Maximum="1"
+                Minimum="0"
+                ValueChanged="volumeSlider_ValueChanged"
+                Value="0.5" />
+            <TextBlock
+                FontSize="10"
+                Foreground="White"
+                Text="Balance" />
+            <Slider
+                Maximum="1"
+                Minimum="-1"
+                ValueChanged="Slider_ValueChanged"
+                Value="0" />
+            <TextBlock
+                FontSize="10"
+                Foreground="White"
+                Text="Velocidad" />
+            <Slider
+                Maximum="4"
+                Minimum="0"
+                TickPlacement="Both"
+                ValueChanged="Slider_ValueChanged_1"
+                Value="1" />
+        </StackPanel>
+        <StackPanel Grid.Row="1" Grid.Column="0">
+            <Label
+                Name="fileNameLb"
+                Content="No Media"
+                Foreground="White" />
+        </StackPanel>
+        <StackPanel Grid.Row="1" Grid.Column="1">
+            <Button Click="Button_Click">Cargar</Button>
+        </StackPanel>
     </Grid>
 </Window>

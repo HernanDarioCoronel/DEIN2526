@@ -1,0 +1,73 @@
+﻿<Window
+    x:Class="Paint.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:Paint"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="MainWindow"
+    Closing="Window_Closing"
+    mc:Ignorable="d">
+    <Grid Margin="5,2">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <TabControl>
+                <TabItem Width="120" Header="Archivo">
+                    <StackPanel>
+                        <Button Margin="2" Content="Nuevo" Click="Nuevo_Click" />
+                        <Button Margin="2" Content="Guardar" Click="Save_Click" />
+                        <Button Margin="2" Content="Salir" Click="Salir_Click" />
+                    </StackPanel>
+                </TabItem>
+                <TabItem Header="Editar">
+                    <StackPanel>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="21"/>
+                                <ColumnDefinition Width="99"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Button Margin="2" Content="Color" Grid.Column="0" Click="ChangeColor_Click" Grid.ColumnSpan="2" />
+                            <Border Name="selectedColor" BorderThickness="2" Background="Black" BorderBrush="Black" Height="20" Width="20" Grid.Column="3" Margin="0,2"/>
+                        </Grid>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="120"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Button Margin="2" Content="Ancho de trazo" Click="ChangeBrushTickness_Click" />
+                            <Border Name="selectedThicknes" BorderThickness="1" BorderBrush="Black" Height="1" Width="20" Grid.Column="2"/>
+                        </Grid>
+                        <Button Margin="2" Content="Borrar" Click="DrawOrPaint_Click" />
+                    </StackPanel>
+                </TabItem>
+            </TabControl>
+            <StackPanel Grid.Column="2" Orientation="Horizontal">
+                <Label>Logo</Label>
+                <Image Width="100" Height="100" />
+            </StackPanel>
+        </Grid>
+        <Border BorderBrush="Black" BorderThickness="1" Grid.Row="1">
+            <InkCanvas Name="paint"/>
+        </Border>
+        <StackPanel Orientation="Horizontal" Grid.Row="2">
+            <ProgressBar Minimum="0" Maximum="100" Value="69" Width="100"/>
+            <StatusBar >
+                <TextBlock>
+                    Status
+                </TextBlock>
+            </StatusBar>
+        </StackPanel>
+    </Grid>
+</Window>
