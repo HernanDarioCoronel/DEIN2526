@@ -1,0 +1,46 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:CalculadoraEstilos.styles">
+    <Style TargetType="{x:Type Window}">
+        <Setter Property="Background" Value="#1D1D1D" />        
+    </Style>
+    <Style x:Key="MainGrid" TargetType="Grid">
+        <Setter Property="Width" Value="325"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+    </Style>
+    <Style TargetType="{x:Type Menu}">
+        <Setter Property="Background" Value="Transparent" />
+    </Style>
+    <Style TargetType="{x:Type TextBox}">
+        <Setter Property="Background" Value="#2E2E2E" />
+        <Setter Property="Height" Value="70" />
+        <Setter Property="Foreground" Value="White" />
+        <Setter Property="FontSize" Value="36"/>
+        <Setter Property="TextAlignment" Value="Right"/>
+        <Setter Property="VerticalContentAlignment" Value="Bottom"/>
+        <Setter Property="Padding" Value="2"/>
+        <Setter Property="Margin" Value="0,5,0,10"/>
+        <Setter Property="BorderThickness" Value="0,2,0,0"/>
+        <Setter Property="BorderBrush" Value="#075B19" />
+
+    </Style>
+    <Style TargetType="{x:Type MenuItem}" >
+        <Setter Property="Foreground" Value="LightGray" />
+    </Style>
+    <Style x:Key="BtnDefault" TargetType="{x:Type Button}">
+        <Setter Property="Background" Value="#3F3F3F" />
+        <Setter Property="Foreground" Value="White" />
+        <Setter Property="Margin" Value="1" />
+        <Setter Property="FontSize" Value="22"/>
+        <Setter Property="MinWidth" Value="60" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Height" Value="30"/>
+    </Style>
+    <Style x:Key="BtnEqual" TargetType="{x:Type Button}" BasedOn="{StaticResource BtnDefault}">
+        <Setter Property="Background" Value="#448420"/>
+    </Style>
+    <Style x:Key="BtnOperator" TargetType="{x:Type Button}" BasedOn="{StaticResource BtnDefault}">
+        <Setter Property="Foreground" Value="Gray"/>
+    </Style>
+</ResourceDictionary>
