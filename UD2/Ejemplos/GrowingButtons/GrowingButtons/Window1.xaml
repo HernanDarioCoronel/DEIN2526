@@ -1,0 +1,185 @@
+﻿<Window
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	x:Class="GrowingButtons.Window1"
+	x:Name="Window"
+	Title="GrowingButtons"
+	Width="530" Height="280"
+	FontWeight="Bold" FontSize="16">
+	<Window.Background>
+		<LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+			<GradientStop Color="Red" Offset="0"/>
+			<GradientStop Color="White" Offset="1"/>
+		</LinearGradientBrush>
+	</Window.Background>
+	<Window.Resources>
+		<Style x:Key="styHeader1" TargetType="TextBlock">
+			<Setter Property="Foreground" Value="White"/>
+			<Setter Property="FontSize" Value="25"/>
+			<Setter Property="Grid.ColumnSpan" Value="2"/>
+			<Setter Property="HorizontalAlignment" Value="Stretch"/>
+			<Setter Property="VerticalAlignment" Value="Stretch"/>
+			<Setter Property="TextAlignment" Value="Center"/>
+		</Style>
+		<Style x:Key="styHeader2" TargetType="TextBlock">
+			<Setter Property="Foreground" Value="Pink"/>
+			<Setter Property="FontSize" Value="17"/>
+			<Setter Property="HorizontalAlignment" Value="Stretch"/>
+			<Setter Property="VerticalAlignment" Value="Stretch"/>
+			<Setter Property="TextAlignment" Value="Center"/>
+		</Style>
+
+		<Style x:Key="btnPropSetterSize" TargetType="Button">
+			<Setter Property="Width" Value="100"/>
+			<Setter Property="Height" Value="50"/>
+			<Style.Triggers>
+				<Trigger Property="IsMouseOver" Value="True">
+					<Setter Property="Width" Value="150"/>
+					<Setter Property="Height" Value="75"/>
+				</Trigger>
+			</Style.Triggers>
+		</Style>
+
+        <ScaleTransform x:Key="BigScale" ScaleX="1.5" ScaleY="1.5"/>
+        <Style x:Key="btnPropSetterScale" TargetType="Button">
+            <Setter Property="Width" Value="100"/>
+            <Setter Property="Height" Value="50"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="LayoutTransform" Value="{StaticResource BigScale}"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+		<Storyboard x:Key="sbBigSize">
+			<DoubleAnimation Duration="0:0:0.2"
+			 Storyboard.TargetProperty="Width" To="150"/>
+			<DoubleAnimation Duration="0:0:0.2"
+			 Storyboard.TargetProperty="Height" To="75"/>
+		</Storyboard>
+		<Storyboard x:Key="sbSmallSize">
+			<DoubleAnimation Duration="0:0:0.2"
+			 Storyboard.TargetProperty="Width" To="100"/>
+			<DoubleAnimation Duration="0:0:0.2"
+			 Storyboard.TargetProperty="Height" To="50"/>
+		</Storyboard>
+		<Storyboard x:Key="sbBigScale">
+			<DoubleAnimation Duration="0:0:0.2"
+			 Storyboard.TargetProperty="LayoutTransform.ScaleX" To="1.5"/>
+			<DoubleAnimation Duration="0:0:0.2"
+			 Storyboard.TargetProperty="LayoutTransform.ScaleY" To="1.5"/>
+		</Storyboard>
+		<Storyboard x:Key="sbSmallScale">
+			<DoubleAnimation Duration="0:0:0.2"
+			 Storyboard.TargetProperty="LayoutTransform.ScaleX" To="1.0"/>
+			<DoubleAnimation Duration="0:0:0.2"
+			 Storyboard.TargetProperty="LayoutTransform.ScaleY" To="1.0"/>
+		</Storyboard>
+
+		<Style x:Key="btnPropSbSize" TargetType="Button">
+            <Setter Property="Width" Value="100"/>
+            <Setter Property="Height" Value="50"/>
+			<Style.Triggers>
+				<Trigger Property="IsMouseOver" Value="True">
+					<Trigger.EnterActions>
+						<BeginStoryboard Storyboard="{StaticResource sbBigSize}"/>
+					</Trigger.EnterActions>
+					<Trigger.ExitActions>
+						<BeginStoryboard Storyboard="{StaticResource sbSmallSize}"/>
+					</Trigger.ExitActions>
+				</Trigger>
+			</Style.Triggers>
+		</Style>
+
+		<Style x:Key="btnPropSbScale" TargetType="Button">
+            <Setter Property="Width" Value="100"/>
+            <Setter Property="Height" Value="50"/>
+            <Setter Property="LayoutTransform">
+				<Setter.Value>
+					<ScaleTransform ScaleX="1" ScaleY="1"/>
+				</Setter.Value>
+			</Setter>
+			<Style.Triggers>
+				<Trigger Property="IsMouseOver" Value="True">
+					<Trigger.EnterActions>
+						<BeginStoryboard Storyboard="{StaticResource sbBigScale}"/>
+					</Trigger.EnterActions>
+					<Trigger.ExitActions>
+						<BeginStoryboard Storyboard="{StaticResource sbSmallScale}"/>
+					</Trigger.ExitActions>
+				</Trigger>
+			</Style.Triggers>
+		</Style>
+
+        <Style x:Key="btnEventSbSize" TargetType="Button">
+			<Setter Property="Width" Value="100"/>
+			<Setter Property="Height" Value="50"/>
+			<Style.Triggers>
+				<EventTrigger RoutedEvent="Button.MouseEnter">
+					<EventTrigger.Actions>
+						<BeginStoryboard Storyboard="{StaticResource sbBigSize}"/>
+					</EventTrigger.Actions>
+				</EventTrigger>
+				<EventTrigger RoutedEvent="Button.MouseLeave">
+					<EventTrigger.Actions>
+						<BeginStoryboard Storyboard="{StaticResource sbSmallSize}"/>
+					</EventTrigger.Actions>
+				</EventTrigger>
+			</Style.Triggers>
+		</Style>
+
+		<Style x:Key="btnEventSbScale" TargetType="Button">
+			<Setter Property="Width" Value="100"/>
+			<Setter Property="Height" Value="50"/>
+			<Setter Property="LayoutTransform">
+				<Setter.Value>
+					<ScaleTransform ScaleX="1" ScaleY="1"/>
+				</Setter.Value>
+			</Setter>
+			<Style.Triggers>
+				<EventTrigger RoutedEvent="Button.MouseEnter">
+					<EventTrigger.Actions>
+						<BeginStoryboard Storyboard="{StaticResource sbBigScale}"/>
+					</EventTrigger.Actions>
+				</EventTrigger>
+				<EventTrigger RoutedEvent="Button.MouseLeave">
+					<EventTrigger.Actions>
+						<BeginStoryboard Storyboard="{StaticResource sbSmallScale}"/>
+					</EventTrigger.Actions>
+				</EventTrigger>
+			</Style.Triggers>
+		</Style>
+	</Window.Resources>
+
+	<Grid Margin="10">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="40"/>
+			<RowDefinition Height="30"/>
+			<RowDefinition Height="75"/>
+			<RowDefinition Height="*"/>
+		</Grid.RowDefinitions>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="150"/>
+			<ColumnDefinition Width="150"/>
+			<ColumnDefinition Width="100"/>
+			<ColumnDefinition Width="100"/>
+			<ColumnDefinition Width="*"/>
+		</Grid.ColumnDefinitions>
+
+		<!-- Property Triggers -->
+		<TextBlock Grid.Row="0" Grid.Column="0" Style="{StaticResource styHeader1}" Text="Property Triggers"/>
+		<TextBlock Grid.Row="1" Grid.Column="0" Style="{StaticResource styHeader2}" Text="Setters"/>
+		<Button Grid.Row="2" Grid.Column="0" Style="{StaticResource btnPropSetterSize}" Content="New Size"/>
+		<Button Grid.Row="3" Grid.Column="0" Style="{StaticResource btnPropSetterScale}" Content="New Scale"/>
+
+		<TextBlock Grid.Row="1" Grid.Column="1" Style="{StaticResource styHeader2}" Text="Storyboards"/>
+		<Button Grid.Row="2" Grid.Column="1" Style="{StaticResource btnPropSbSize}" Content="New Size"/>
+		<Button Grid.Row="3" Grid.Column="1" Style="{StaticResource btnPropSbScale}" Content="New Scale"/>
+
+		<!-- Event Triggers -->
+		<TextBlock Grid.Row="0" Grid.Column="2" Style="{StaticResource styHeader1}" Text="Event Triggers"/>
+		<TextBlock Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" Style="{StaticResource styHeader2}" Text="Setters"/>
+		<Button Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2" Style="{StaticResource btnEventSbSize}" Content="New Size"/>
+		<Button Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2" Style="{StaticResource btnEventSbScale}" Content="New Scale"/>
+	</Grid>
+</Window>
