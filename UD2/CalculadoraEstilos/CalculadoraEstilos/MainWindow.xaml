@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:CalculadoraEstilos"
         mc:Ignorable="d"
         Background="#1D1D1D"
+        WindowStyle="None"
         Title="MainWindow" Height="350" Width="521.03">
     <Window.Resources>
         <ResourceDictionary>
@@ -38,34 +39,34 @@
             <MenuItem Header="Convertidor"/>
         </Menu>
         <TextBox Grid.Row="1" Grid.ColumnSpan="6" Text="0"/>
-                
-        <Button Grid.Row="2">M</Button>
-        <Button Grid.Row="3">±</Button>
-        <Button Grid.Row="4">Sqrt</Button>
-        <Button Grid.Row="5">%</Button>
-        <Button Grid.Row="6">1/x</Button>
 
-        <Button Grid.Row="2" Grid.Column="2">CE</Button>
-        <Button Grid.Row="3" Grid.Column="2">7</Button>
-        <Button Grid.Row="4" Grid.Column="2">4</Button>
-        <Button Grid.Row="5" Grid.Column="2">1</Button>
-        <Button Grid.Row="6" Grid.Column="2" Grid.ColumnSpan="2">0</Button>
+        <Button Grid.Row="2" Style="{StaticResource BtnOperator}">M</Button>
+        <Button Grid.Row="3" Style="{StaticResource BtnOperator}">±</Button>
+        <Button Grid.Row="4" Style="{StaticResource BtnOperator}">Sqrt</Button>
+        <Button Grid.Row="5" Style="{StaticResource BtnOperator}">%</Button>
+        <Button Grid.Row="6" Style="{StaticResource BtnOperator}">1/x</Button>
 
-        <Button Grid.Row="2" Grid.Column="3">C</Button>
-        <Button Grid.Row="3" Grid.Column="3">8</Button>
-        <Button Grid.Row="4" Grid.Column="3">5</Button>
-        <Button Grid.Row="5" Grid.Column="3">2</Button>
+        <Button Grid.Row="2" Grid.Column="2" Style="{StaticResource BtnOperator}">CE</Button>
+        <Button Grid.Row="3" Grid.Column="2" Style="{StaticResource BtnDefault}">7</Button>
+        <Button Grid.Row="4" Grid.Column="2" Style="{StaticResource BtnDefault}">4</Button>
+        <Button Grid.Row="5" Grid.Column="2" Style="{StaticResource BtnDefault}">1</Button>
+        <Button Grid.Row="6" Grid.Column="2" Grid.ColumnSpan="2" Style="{StaticResource BtnDefault}">0</Button>
 
-        <Button Grid.Row="2" Grid.Column="4">X</Button>
-        <Button Grid.Row="3" Grid.Column="4">9</Button>
-        <Button Grid.Row="4" Grid.Column="4">6</Button>
-        <Button Grid.Row="5" Grid.Column="4">3</Button>
-        <Button Grid.Row="6" Grid.Column="4">,</Button>
+        <Button Grid.Row="2" Grid.Column="3" Style="{StaticResource BtnOperator}">C</Button>
+        <Button Grid.Row="3" Grid.Column="3" Style="{StaticResource BtnDefault}">8</Button>
+        <Button Grid.Row="4" Grid.Column="3" Style="{StaticResource BtnDefault}">5</Button>
+        <Button Grid.Row="5" Grid.Column="3" Style="{StaticResource BtnDefault}">2</Button>
 
-        <Button Grid.Row="2" Grid.Column="5">÷</Button>
-        <Button Grid.Row="3" Grid.Column="5">x</Button>
-        <Button Grid.Row="4" Grid.Column="5">-</Button>
-        <Button Grid.Row="5" Grid.Column="5">+</Button>
+        <Button Grid.Row="2" Grid.Column="4"  Style="{StaticResource BtnOperator}">X</Button>
+        <Button Grid.Row="3" Grid.Column="4" Style="{StaticResource BtnDefault}">9</Button>
+        <Button Grid.Row="4" Grid.Column="4" Style="{StaticResource BtnDefault}">6</Button>
+        <Button Grid.Row="5" Grid.Column="4" Style="{StaticResource BtnDefault}">3</Button>
+        <Button Grid.Row="6" Grid.Column="4" Style="{StaticResource BtnDefault}">,</Button>
+
+        <Button Grid.Row="2" Grid.Column="5" Style="{StaticResource BtnOperator}">÷</Button>
+        <Button Grid.Row="3" Grid.Column="5" Style="{StaticResource BtnOperator}">x</Button>
+        <Button Grid.Row="4" Grid.Column="5" Style="{StaticResource BtnOperator}">-</Button>
+        <Button Grid.Row="5" Grid.Column="5" Style="{StaticResource BtnOperator}">+</Button>
         <Button Style="{StaticResource BtnEqual}" Grid.Row="6" Grid.Column="5" >=</Button>
-    </Grid> TO DO: AGREGAR LOS ESTILOS
+    </Grid>
 </Window>
