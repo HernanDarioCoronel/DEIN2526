@@ -1,0 +1,26 @@
+﻿<Window x:Class="DataBinding.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="300">
+        <Label>Modo de seleccionado</Label>
+        <Separator/>
+        <RadioButton GroupName="mode" Content="One Time" IsChecked="True" Checked="CambiarModo"/>
+        <RadioButton GroupName="mode" Content="One Way"/>
+        <RadioButton GroupName="mode" Content="Two Way"/>
+        <RadioButton GroupName="mode" Content="OneWay To Source"/>
+
+        <Label>Cuadro de texto 1</Label>
+        <TextBox Name="txt1Bnd" Text="{
+            Binding ElementName=txt2Bnd,
+            Path=Text,
+            Mode=Default
+            }"/>
+        <Label>Cuadro de texto 2</Label>
+        <TextBox Name="txt2Bnd" Text="OneTime por defecto"/>
+
+    </StackPanel>
+</Window>

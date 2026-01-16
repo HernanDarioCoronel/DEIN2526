@@ -1,0 +1,50 @@
+﻿<Window x:Class="Storyboard2.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Storyboard2"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <Grid>
+        <Button Name="BotonCentrado" BorderBrush="Black" BorderThickness="1" Width="100" Height="30" Content="Botón Centrado">
+            <Button.RenderTransform>
+                <ScaleTransform ScaleX="1" ScaleY="1"/>
+            </Button.RenderTransform>
+            <Button.Triggers>
+                <EventTrigger RoutedEvent="Button.MouseEnter">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation 
+                                Storyboard.TargetName="BotonCentrado"
+                                Storyboard.TargetProperty="RenderTransform.ScaleX"
+                                To="1.2" Duration="0:0:1"
+                                />
+                            <DoubleAnimation 
+                                Storyboard.TargetName="BotonCentrado"
+                                Storyboard.TargetProperty="RenderTransform.ScaleY"
+                                To="1.2" Duration="0:0:1"
+                                />
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+                <EventTrigger RoutedEvent="Button.MouseLeave">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation 
+                                Storyboard.TargetName="BotonCentrado"
+                                Storyboard.TargetProperty="RenderTransform.ScaleX"
+                                To="1" Duration="0:0:1"
+                                />
+                            <DoubleAnimation 
+                                Storyboard.TargetName="BotonCentrado"
+                                Storyboard.TargetProperty="RenderTransform.ScaleY"
+                                To="1" Duration="0:0:1"
+                                />
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Button.Triggers>
+        </Button>
+    </Grid>
+</Window>
