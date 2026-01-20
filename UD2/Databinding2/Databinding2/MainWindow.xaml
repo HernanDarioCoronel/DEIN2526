@@ -1,0 +1,15 @@
+﻿<Window x:Class="Databinding2.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Databinding2"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="600" Width="525">
+    <StackPanel>
+        <StackPanel Height="510">
+            <Image Source="./Assets/Tomate.png" Height="{Binding ElementName=SizeControl, Path=Value}" Width="{Binding ElementName=SizeControl, Path=Value}"/>
+        </StackPanel>
+        <Slider Name="SizeControl" Width="300" Minimum="100" Maximum="500" Value="300"/>
+    </StackPanel>
+</Window>

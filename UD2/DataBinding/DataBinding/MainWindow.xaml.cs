@@ -27,13 +27,16 @@ namespace DataBinding
 
         private void CambiarModo(object sender, RoutedEventArgs e)
         {
-            if (txt1Bnd == null) return;
+            if (txt1Bnd == null || txt2Bnd == null) return;
 
             RadioButton rb = sender as RadioButton;
             if (rb == null) return;
-
+            
             Binding nuevoBinding = new Binding("Text");
-            nuevoBinding.ElementName = "txt2Bnd";
+            nuevoBinding.ElementName = "txt1Bnd";
+
+            nuevoBinding.UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged;
+            BindingOperations.ClearBinding(txt2Bnd, TextBox.TextProperty);
 
             switch (rb.Content.ToString())
             {
@@ -42,8 +45,7 @@ namespace DataBinding
                 case "Two Way": nuevoBinding.Mode = BindingMode.TwoWay; break;
                 case "OneWay To Source": nuevoBinding.Mode = BindingMode.OneWayToSource; break;
             }
-
-            txt1Bnd.SetBinding(TextBox.TextProperty, nuevoBinding);
+            txt2Bnd.SetBinding(TextBox.TextProperty, nuevoBinding);
         }
     }
 }

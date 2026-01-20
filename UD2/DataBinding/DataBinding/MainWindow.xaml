@@ -9,18 +9,18 @@
         <Label>Modo de seleccionado</Label>
         <Separator/>
         <RadioButton GroupName="mode" Content="One Time" IsChecked="True" Checked="CambiarModo"/>
-        <RadioButton GroupName="mode" Content="One Way"/>
-        <RadioButton GroupName="mode" Content="Two Way"/>
-        <RadioButton GroupName="mode" Content="OneWay To Source"/>
+        <RadioButton GroupName="mode" Content="One Way" Checked="CambiarModo"/>
+        <RadioButton GroupName="mode" Content="Two Way" Checked="CambiarModo"/>
+        <RadioButton GroupName="mode" Content="OneWay To Source" Checked="CambiarModo"/>
 
         <Label>Cuadro de texto 1</Label>
-        <TextBox Name="txt1Bnd" Text="{
+        <TextBox Name="txt1Bnd" Text="OneTime por defecto"/>
+        <Label>Cuadro de texto 2</Label>
+        <TextBox Name="txt2Bnd" Text="{
             Binding ElementName=txt2Bnd,
             Path=Text,
             Mode=Default
             }"/>
-        <Label>Cuadro de texto 2</Label>
-        <TextBox Name="txt2Bnd" Text="OneTime por defecto"/>
 
     </StackPanel>
 </Window>
