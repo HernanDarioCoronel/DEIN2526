@@ -15,14 +15,23 @@ using System.Windows.Shapes;
 
 namespace DataBinding4
 {
-    /// <summary>
-    /// Lógica de interacción para MainWindow.xaml
-    /// </summary>
-    public partial class MainWindow : Window
+    public partial class VistaPrevia : Window
     {
-        public MainWindow()
+        Persona miPersona = new Persona { Nombre = "Juan", Edad = 20, Estudiante = true };
+        public VistaPrevia()
         {
             InitializeComponent();
+
+            this.DataContext = miPersona;
+        }
+
+        private void BtnEditar_Click(object sender, RoutedEventArgs e)
+        {
+            VistaEdicion vEdicion = new VistaEdicion();
+
+            vEdicion.DataContext = miPersona;
+
+            vEdicion.Show();
         }
     }
 }
