@@ -5,6 +5,7 @@
         string Nombre,
         string Vida,
         string Areas,
-        string Biografia
+        string Biografia,
+        List<Premio> Premios
     );
 }

@@ -15,14 +15,15 @@ namespace DbConnection.Classes.Utils
             conexion = new SQLiteConnection(cadenaConexion);
         }
 
-        public void abrirBD()
+        public void abrirBD(Boolean showSuccessMessage = true)
         {
             try
             {
                 if (conexion.State != ConnectionState.Open)
                 {
                     conexion.Open();
-                    MessageBox.Show("BD abierta correctamente (SQLite)");
+                    if (showSuccessMessage)
+                        MessageBox.Show("BD abierta correctamente (SQLite)");
                 }
             }
             catch (SQLiteException erroBD)

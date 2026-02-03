@@ -13,8 +13,8 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Window.Resources>
-    <DocumentViewer Loaded="DocumentViewer_Loaded">
-        <FixedDocument Name="DocContent">
+    <DocumentViewer>
+        <FixedDocument Name="DocContent" Loaded="DocContent_Loaded">
             
         </FixedDocument>
     </DocumentViewer>
