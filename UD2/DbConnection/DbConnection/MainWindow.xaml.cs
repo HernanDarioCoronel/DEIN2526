@@ -14,14 +14,8 @@ using System.Windows.Shapes;
 
 namespace DbConnection
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
-        private int pageHeight = 1123;
-        private int pageWidth = 794;
-        private string title = "LISTADO ACTUALIZADO DE PREMIOS NOBEL";
         private ClsBD miBD;
         private List<Persona> listaPersonas;
         public MainWindow()
@@ -32,13 +26,6 @@ namespace DbConnection
             miBD.abrirBD(false);
             listaPersonas = GetData();
         }
-
-        /** 
-         To Do:
-            - Fixear overflow de textos
-            - No se ve el titulo en las páginas
-            - usar grid como contenedor de páginas         
-         */
 
         private void DocContent_Loaded(object sender, RoutedEventArgs e)
         {
@@ -112,7 +99,7 @@ namespace DbConnection
             TextBlock titleTextBlock = new TextBlock()
             {
                 Style = (Style)FindResource("h1"),
-                Text = title,
+                Text = "LISTADO ACTUALIZADO DE PREMIOS NOBEL",
             };
 
 
@@ -127,6 +114,9 @@ namespace DbConnection
             };
             StackPanel pageContent = new StackPanel()
             {
+                Margin = new Thickness(96),
+                Width = 793.7 - 96 * 2,
+                Height = 1122.5 - 96 * 2,
                 Children =
                 {
                     titleTextBlock,
@@ -137,8 +127,6 @@ namespace DbConnection
 
             FixedPage fixedPage = new FixedPage()
             {
-                Width = pageWidth,
-                Height = pageHeight,
                 Children =
                 {
                     pageContent
@@ -174,8 +162,15 @@ namespace DbConnection
                     TextBlock premioTextBlock = new TextBlock()
                     {
                         Style = (Style)FindResource("p"),
-                        Text = $"{premio.Anio} - {premio.Nombre}: {premio.Razon}",
                     };
+
+                    Run anioBold = new Run($"{premio.Anio}") { FontWeight = FontWeights.Bold };
+
+                    Run restoTexto = new Run($" - {premio.Nombre}: {premio.Razon}");
+
+                    premioTextBlock.Inlines.Add(anioBold);
+                    premioTextBlock.Inlines.Add(restoTexto);
+
                     PremiosStack.Children.Add(premioTextBlock);
                 }
             }
@@ -189,18 +184,13 @@ namespace DbConnection
                         Style = (Style)FindResource("h3"),
                         Text = "Biografía:",
                     },
-                    new ScrollViewer()
+                    new TextBlock()
                     {
-                        VerticalScrollBarVisibility = ScrollBarVisibility.Auto,
-                        Height = 200,
-                        Content =
-                            new TextBlock()
-                            {
-                                Style = (Style)FindResource("p"),
-                                Text = p.Biografia,
-                                TextWrapping = TextWrapping.Wrap,
+                        Style = (Style)FindResource("p"),
+                        Text = p.Biografia,
+                        MinHeight = 200,
+                        TextWrapping = TextWrapping.Wrap,
 
-                            }
                     }
                 }
             };
