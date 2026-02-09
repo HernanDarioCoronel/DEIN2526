@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:Componentes"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-            
+    <Grid  HorizontalAlignment="Center" VerticalAlignment="Center">
+        <Label Name="lbTimeDisplay" FontSize="60"/>
     </Grid>
 </UserControl>

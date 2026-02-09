@@ -8,6 +8,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace Componentes
 {
@@ -16,9 +17,20 @@ namespace Componentes
     /// </summary>
     public partial class UserControl1 : UserControl
     {
+        DispatcherTimer dt;
         public UserControl1()
         {
             InitializeComponent();
+            dt = new DispatcherTimer();
+
+            dt.Interval = TimeSpan.FromSeconds(0,0,1);
+            dt.Tick += Dt_Tick;
+            dt.Start();
+        }
+
+        private void Dt_Tick(object? sender, EventArgs e)
+        {
+            lbTimeDisplay.Content = DateTime.Now.ToLongTimeString();
         }
     }
 
