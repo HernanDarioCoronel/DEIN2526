@@ -10,11 +10,26 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <Componentes1:UserControl1 
-            BorderBrush="Black"
-            BorderThickness="2"            
-            Background="Aqua" 
-            HorizontalAlignment="Center" 
-            VerticalAlignment="Center"/>
+        <Border Background="SlateGray"
+        BorderBrush="LightGray"
+        BorderThickness="1"
+        CornerRadius="10" 
+        HorizontalAlignment="Center"
+        VerticalAlignment="Center"
+        Padding="10">
+
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="15" 
+                          Direction="315" 
+                          RenderingBias="Quality" 
+                          ShadowDepth="15" 
+                          Opacity="0.5"/>
+            </Border.Effect>
+            <Componentes1:UserControl1  
+                Padding="10 5"
+                Background="#050505"
+                FontFamily="Consolas"
+                />
+        </Border>
     </Grid>
 </Window>
