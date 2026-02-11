@@ -55,6 +55,9 @@ namespace Input
         public static readonly DependencyProperty JumpValueProperty =
             DependencyProperty.Register("JumpValue", typeof(float), typeof(NumericInput), new PropertyMetadata(1f));
 
+        public static readonly DependencyProperty DecimalsProperty =
+            DependencyProperty.Register("Decimals", typeof(int), typeof(NumericInput), new PropertyMetadata(2));
+
         public float MinValue
         {
             get => (float)GetValue(MinValueProperty);
@@ -72,8 +75,13 @@ namespace Input
         }
         public float Value
         {
-            get => (float)GetValue(ValueProperty);
+            get => (float)Math.Round((float)GetValue(ValueProperty), Decimals);
             set => SetValue(ValueProperty, value);
+        }
+        public int Decimals
+        {
+            get => (int)GetValue(DecimalsProperty);
+            set => SetValue(DecimalsProperty, value);
         }
     }
 }

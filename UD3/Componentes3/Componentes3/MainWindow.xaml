@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Componentes3"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <Input:NumericInput />
-    </Grid>
+    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+        <Input:NumericInput Width="200" JumpValue="0.5"/>
+    </StackPanel>
 </Window>
