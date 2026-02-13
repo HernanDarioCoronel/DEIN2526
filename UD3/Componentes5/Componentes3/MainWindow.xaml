@@ -1,0 +1,55 @@
+﻿<Window xmlns:Input="clr-namespace:Input;assembly=Input"  x:Class="Componentes3.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Componentes3"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="500"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Input:LabeledSlider 
+            Name="sliderR"
+            Grid.Row="0" 
+            Label="R"
+            MinValue="0"
+            MaxValue="255" 
+            Value="0"         
+            ValueChanged="sliderR_ValueChanged"
+            />
+        <Input:LabeledSlider 
+            Name="sliderG"
+            Grid.Row="1" 
+            Label="G" 
+            MinValue="0"
+            MaxValue="255" 
+            Value="0"
+            ValueChanged="sliderG_ValueChanged"
+            />
+        <Input:LabeledSlider 
+            Name="sliderB"
+            Grid.Row="2" 
+            Label="B" 
+            MinValue="0"
+            MaxValue="255" 
+            Value="1"
+            ValueChanged="sliderB_ValueChanged"
+            />
+        <Rectangle 
+            Grid.Row="3" 
+            Height="100" 
+            Width="200" 
+            Fill="{Binding Color, RelativeSource={RelativeSource AncestorType=Window}}" 
+            Stroke="Black" 
+            StrokeThickness="1"
+            />
+    </Grid>
+</Window>
