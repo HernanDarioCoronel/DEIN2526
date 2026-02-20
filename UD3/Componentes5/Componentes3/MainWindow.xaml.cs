@@ -1,46 +1,55 @@
-﻿using System.Text;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
+﻿using System.Windows;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Componentes3
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
-        private Color color = new Color();
+        public static readonly DependencyProperty ColorResultProperty =
+            DependencyProperty.Register("ColorResult", typeof(SolidColorBrush), typeof(MainWindow),
+                new PropertyMetadata(new SolidColorBrush(Colors.Black)));
 
-
+        public SolidColorBrush ColorResult
+        {
+            get => (SolidColorBrush)GetValue(ColorResultProperty);
+            set => SetValue(ColorResultProperty, value);
+        }
 
         public MainWindow()
         {
             InitializeComponent();
+            ActualizarColorFinal();
+        }
+
+        private void ActualizarColorFinal()
+        {
+            Color nuevoColor = Color.FromRgb(
+                (byte)sliderR.Value,
+                (byte)sliderG.Value,
+                (byte)sliderB.Value);
+
+            ColorResult = new SolidColorBrush(nuevoColor);
         }
 
         private void sliderR_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            color.R = (byte)sliderR.Value;
-            sliderR.TextBoxColor = Color.FromRgb((byte)sliderR.Value, 0, 0);
+            if (sliderR == null) return;
+            sliderR.TextBoxColor = Color.FromRgb((byte)e.NewValue, 0, 0);
+            ActualizarColorFinal();
         }
 
         private void sliderG_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            color.G = (byte)sliderG.Value;
-            sliderG.TextBoxColor = Color.FromRgb(0, (byte)sliderG.Value, 0);
+            if (sliderG == null) return;
+            sliderG.TextBoxColor = Color.FromRgb(0, (byte)e.NewValue, 0);
+            ActualizarColorFinal();
         }
 
         private void sliderB_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            color.B = (byte)sliderB.Value;
-            sliderB.TextBoxColor = Color.FromRgb(0, 0, (byte)sliderB.Value);
+            if (sliderB == null) return;
+            sliderB.TextBoxColor = Color.FromRgb(0, 0, (byte)e.NewValue);
+            ActualizarColorFinal();
         }
     }
 }

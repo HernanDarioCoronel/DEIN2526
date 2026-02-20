@@ -47,7 +47,8 @@
             Grid.Row="3" 
             Height="100" 
             Width="200" 
-            Fill="{Binding Color, RelativeSource={RelativeSource AncestorType=Window}}" 
+            Margin="20"
+            Fill="{Binding ColorResult, RelativeSource={RelativeSource AncestorType=Window}}" 
             Stroke="Black" 
             StrokeThickness="1"
             />

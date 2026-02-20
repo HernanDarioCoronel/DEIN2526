@@ -29,8 +29,11 @@
         <TextBox 
             FontSize="24" 
             Grid.Column="2" 
-            Text="{Binding Value, RelativeSource={RelativeSource AncestorType=UserControl}}"
-            Background="{Binding Color, RelativeSource={RelativeSource AncestorType=UserControl}}"
-            />
+            Text="{Binding Value, ElementName=Root}"
+            VerticalAlignment="Center">
+            <TextBox.Background>
+                <SolidColorBrush Color="{Binding TextBoxColor, ElementName=Root}"/>
+            </TextBox.Background>
+        </TextBox>
     </Grid>
 </UserControl>
